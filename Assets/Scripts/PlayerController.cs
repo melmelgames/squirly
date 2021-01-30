@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     public GameObject holeAcorn;
     public GameObject holeWithAcornCovered;
     public GameObject holeCovered;
+    public GameObject acornPrefab;
+    private GameObject acorn;
     private Rigidbody2D playerRB2D;
     private Animator playerAnimator;
     private Vector2 movementDir;
     private bool isHoldingAcorn = false;
-    private GameObject acorn;
     [SerializeField] private GameObject hole;
     [SerializeField] private float moveSpeed;
 
@@ -144,7 +145,10 @@ public class PlayerController : MonoBehaviour
         
             if(hole.CompareTag("hole_with_acorn_covered")){
                 playerAnimator.SetTrigger("dig");
-                Instantiate(holeAcorn, hole.transform.position, Quaternion.identity);  
+                GameObject holeWithAcorn = (GameObject) Instantiate(holeAcorn, hole.transform.position, Quaternion.identity);  
+                GameObject buriedAcorn = (GameObject) Instantiate(acornPrefab, hole.transform.position, Quaternion.identity);
+                buriedAcorn.SetActive(false);
+                buriedAcorn.transform.parent = holeWithAcorn.transform;
                 Destroy(hole);
             }        
         }
@@ -161,7 +165,7 @@ public class PlayerController : MonoBehaviour
         }
         if(hole.CompareTag("hole_with_acorn")){
             playerAnimator.SetTrigger("dig");
-            Instantiate(holeWithAcornCovered, hole.transform.position, Quaternion.identity);
+            Instantiate(holeWithAcornCovered, hole.transform.position, Quaternion.identity); 
             Destroy(hole);
         }
     }

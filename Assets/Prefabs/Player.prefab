@@ -153,6 +153,9 @@ MonoBehaviour:
     type: 3}
   holeCovered: {fileID: 7239298282898548171, guid: e031993eac7f2454c9623198d784520a,
     type: 3}
+  acornPrefab: {fileID: 745064773477678295, guid: 6c57e512a24d7644c9dc9330dd418572,
+    type: 3}
+  hole: {fileID: 0}
   moveSpeed: 5
 --- !u!95 &6136129111375595925
 Animator:

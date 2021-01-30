@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - acorn
+  - hole_empty
+  - hole_with_acorn
+  - hole_covered
+  - grass
+  - ground
+  - hole_with_acorn_covered
   layers:
   - Default
   - TransparentFX
@@ -38,6 +45,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 117013007
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Characters & Items
+    uniqueID: 20032007
+    locked: 0
+  - name: Trees
+    uniqueID: 3368499003
+    locked: 0
+  - name: Overlay
+    uniqueID: 780789277
     locked: 0

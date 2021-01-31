@@ -20,10 +20,15 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public GameObject acornPrefab;
+    public Vector3 offset;
+    private AcornTree[] trees;
     [SerializeField] private int score;
 
     private void Start(){
         score = 0;
+        trees = FindObjectsOfType<AcornTree>();
+        InvokeRepeating("SpawnAcorn", 0f, 5.0f);
     }
 
     public void AddScore(){
@@ -36,6 +41,11 @@ public class GameManager : MonoBehaviour
 
     public int GetScore(){
         return score;
+    }
+
+    private void SpawnAcorn(){
+        int rdnIndex = Random.Range(0,trees.Length);
+        GameObject newAcorn = (GameObject) Instantiate(acornPrefab, trees[rdnIndex].gameObject.transform.position + offset, Quaternion.identity);
     }
 
 

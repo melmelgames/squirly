@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59483bd48d148d4478c5c74537875de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 4427996492907956963, guid: cbd2b23199e8bb742824a5db49801135,
+    type: 3}
+  chanceOfEnemySpawn: 0
 --- !u!58 &531838932984347987
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -5,6 +5,19 @@ using UnityEngine.UI;
 
 public class ScoreWindow : MonoBehaviour
 {
+        #region SINGLETON PATTERN
+    public static ScoreWindow instance;
+
+    private void Awake(){
+        if (instance !=  null){
+            Destroy(instance);
+            instance = this;
+            return;
+        }
+        instance = this;
+    }
+
+    #endregion
     public Text scoreText;
     private GameManager gameManagerInstance;
 

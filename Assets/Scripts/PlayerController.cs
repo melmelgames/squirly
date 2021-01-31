@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public GameObject holeWithAcornCovered;
     public GameObject holeCovered;
     public GameObject acornPrefab;
-    public GameObject scoreWindow;
     private ScoreWindow scoreWindowScript;
     private GameObject acorn;
     private Rigidbody2D playerRB2D;
@@ -17,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementDir;
     private bool isHoldingAcorn = false;
     private GameManager gameManagerInstance;
-    [SerializeField] private GameObject hole;
+    private GameObject hole;
     [SerializeField] private float moveSpeed;
 
     private void Awake(){
@@ -25,7 +24,7 @@ public class PlayerController : MonoBehaviour
         playerRB2D = gameObject.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
         gameManagerInstance = GameManager.instance;
-        scoreWindowScript = scoreWindow.GetComponent<ScoreWindow>();
+        scoreWindowScript = ScoreWindow.instance.gameObject.GetComponent<ScoreWindow>();
     }
 
 
@@ -162,12 +161,9 @@ public class PlayerController : MonoBehaviour
                 Destroy(hole);
             }        
         }
-
-        
     }
 
     private void CoverHole(){
-
         if(hole.CompareTag("hole_empty")){
             playerAnimator.SetTrigger("dig");
             Instantiate(holeCovered, hole.transform.position, Quaternion.identity);

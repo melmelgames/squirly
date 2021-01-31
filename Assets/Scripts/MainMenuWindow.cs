@@ -7,6 +7,7 @@ public class MainMenuWindow : MonoBehaviour
 {
     #region SINGLETON PATTERN
     public static MainMenuWindow instance;
+    private AudioSource sourceOfAudio;
 
     private void Awake(){
         if (instance !=  null){
@@ -15,14 +16,24 @@ public class MainMenuWindow : MonoBehaviour
             return;
         }
         instance = this;
+        sourceOfAudio = gameObject.AddComponent<AudioSource>();
     }
 
     #endregion
 
-    public void StartButtonClicked(){
+    public AudioClip startSound;
+
+    private IEnumerator StartWithDelay(){
+        sourceOfAudio.PlayOneShot(startSound);
         GameManager.instance.StartGame();
+        yield return new WaitForSeconds(1f);
         ScoreWindow.instance.Show();
         Hide();
+        
+    }
+
+    public void StartButtonClicked(){
+        StartCoroutine(StartWithDelay());
     }
 
     public void ControlsButtonClicked(){

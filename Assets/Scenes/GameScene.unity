@@ -113376,11 +113376,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuWindow
       objectReference: {fileID: 0}
-    - target: {fileID: 897256120105966411, guid: 2fd2f82352ed30f4a935271c4d0cc747,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fd2f82352ed30f4a935271c4d0cc747, type: 3}
 --- !u!224 &1953145281435455980 stripped

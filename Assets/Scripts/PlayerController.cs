@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip grabSound;
+    public AudioClip dropSound;
+    public AudioClip digSound;
+    private AudioSource sourceOfAudio;
     public GameObject holeEmpty;
     public GameObject holeAcorn;
     public GameObject holeWithAcornCovered;
@@ -26,6 +30,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         gameManagerInstance = GameManager.instance;
         scoreWindowScript = ScoreWindow.instance.gameObject.GetComponent<ScoreWindow>();
+        sourceOfAudio = gameObject.AddComponent<AudioSource>();
     }
 
 
@@ -51,10 +56,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             if(!isHoldingAcorn){
                 GrabAcorn(acorn);
+                sourceOfAudio.PlayOneShot(grabSound);
                 return;
             }
             if(isHoldingAcorn){
                 DropAcorn();
+                sourceOfAudio.PlayOneShot(dropSound);
                 return;
             }
         }  
@@ -62,14 +69,17 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             if(hole == null){
                 DigHole();
+                sourceOfAudio.PlayOneShot(digSound);
                 return;
             }
             if(hole.CompareTag("hole_covered") || hole.CompareTag("hole_with_acorn_covered")){
                 DigHole();
+                sourceOfAudio.PlayOneShot(digSound);
                 return;
             }
             if(hole.CompareTag("hole_empty") || hole.CompareTag("hole_with_acorn")){
                 CoverHole();
+                sourceOfAudio.PlayOneShot(digSound);
                 return;
             }
 

@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f78bb3b610ffb74ebb1a5eae7b08f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabSound: {fileID: 8300000, guid: 218a1d9453646c4489c4211d442fde69, type: 3}
+  dropSound: {fileID: 8300000, guid: 77c3f5cfa9ed79444ace58434877dd7d, type: 3}
+  digSound: {fileID: 8300000, guid: 44ec7aa5a2fa4c041b7fb943781daa0d, type: 3}
   holeEmpty: {fileID: 1741539495812041163, guid: 5c1e1f1f0de0a4449986acf363299074,
     type: 3}
   holeAcorn: {fileID: 1768802983910495281, guid: 434b79e7787de1449952aa6061b44996,

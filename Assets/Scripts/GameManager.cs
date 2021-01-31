@@ -58,10 +58,22 @@ public class GameManager : MonoBehaviour
         GameObject newAcorn = (GameObject) Instantiate(acornPrefab, trees[rdnIndex].gameObject.transform.position + offset, Quaternion.identity);
     }
 
+    private void ResetMap(){
+        Acorn[] acorns = FindObjectsOfType<Acorn>();
+        foreach(Acorn acorn in acorns){
+            Destroy(acorn.gameObject);
+        }
+        Hole[] holes = FindObjectsOfType<Hole>();
+        foreach(Hole hole in holes){
+            Destroy(hole.gameObject);
+        }
+    }
+
     public void StartGame(){
         Time.timeScale = 1.0f;
         score = 0;
         ScoreWindow.instance.ResetTime();
+        ResetMap();
         trees = FindObjectsOfType<AcornTree>();
         InvokeRepeating("SpawnAcorn", 0f, 5.0f);
     }

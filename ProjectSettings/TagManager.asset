@@ -11,6 +11,7 @@ TagManager:
   - grass
   - ground
   - hole_with_acorn_covered
+  - visibleArea
   layers:
   - Default
   - TransparentFX

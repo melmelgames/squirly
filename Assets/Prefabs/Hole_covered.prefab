@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4427996492907956963, guid: cbd2b23199e8bb742824a5db49801135,
     type: 3}
-  chanceOfEnemySpawn: 5
+  chanceOfEnemySpawn: 25
 --- !u!58 &8592315522755646107
 CircleCollider2D:
   m_ObjectHideFlags: 0

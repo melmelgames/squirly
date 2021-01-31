@@ -18,6 +18,10 @@ public class EnemyController : MonoBehaviour
     private Vector2 moveDir;
     private float moveSpeed = 4.5f;
     private bool canRun = false;
+    [SerializeField] private float xMin;
+    [SerializeField] private float xMax;
+    [SerializeField] private float yMin;
+    [SerializeField] private float yMax;
 
     private void Awake(){
         enemyAnimator = gameObject.GetComponent<Animator>();
@@ -32,6 +36,7 @@ public class EnemyController : MonoBehaviour
             moveDir = gameObject.transform.position - player.transform.position;
             transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime, Space.World);
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -57,6 +62,7 @@ public class EnemyController : MonoBehaviour
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         canRun = true;
+        Destroy(gameObject, 30f);
     }
 
     private IEnumerator GrabAcornAftertTime(){
@@ -69,7 +75,7 @@ public class EnemyController : MonoBehaviour
             acorn.transform.parent = gameObject.transform;
             acorn.SetActive(true);
             isHoldingAcorn = true;
-
+            gameManagerInstance.AddLostAcorn();
             gameManagerInstance.SubtractScore();
             scoreWindowScript.UpdateScoreText();
             Instantiate(holeEmpty, hole.transform.position, Quaternion.identity);     

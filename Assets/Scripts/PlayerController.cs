@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManagerInstance;
     private GameObject hole;
     [SerializeField] private float moveSpeed;
+    private bool gamePaused = false;
 
     private void Awake(){
         acorn = null;
@@ -29,6 +30,22 @@ public class PlayerController : MonoBehaviour
 
 
     private void Update(){
+
+        if(Input.GetKeyDown(KeyCode.P)){
+            if(gamePaused){
+                gamePaused = false;
+                PauseWindow.instance.Hide();
+                gameManagerInstance.UnpauseGame();
+            }
+            if(!gamePaused){
+                gamePaused = true;
+                PauseWindow.instance.Show();
+                gameManagerInstance.PauseGame();
+            }
+
+        }
+
+
         GetInput(); 
         // GRAB/DROP ACORNS
         if(Input.GetKeyDown(KeyCode.E)){
@@ -150,6 +167,7 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetTrigger("dig");
                 Instantiate(holeEmpty, hole.transform.position, Quaternion.identity);  
                 Destroy(hole);
+                return;
             }        
         
             if(hole.CompareTag("hole_with_acorn_covered")){
@@ -159,6 +177,7 @@ public class PlayerController : MonoBehaviour
                 buriedAcorn.SetActive(false);
                 buriedAcorn.transform.parent = holeWithAcorn.transform;
                 Destroy(hole);
+                return;
             }        
         }
     }
@@ -168,11 +187,13 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("dig");
             Instantiate(holeCovered, hole.transform.position, Quaternion.identity);
             Destroy(hole);
+            return;
         }
         if(hole.CompareTag("hole_with_acorn")){
             playerAnimator.SetTrigger("dig");
             Instantiate(holeWithAcornCovered, hole.transform.position, Quaternion.identity); 
             Destroy(hole);
+            return;
         }
     }
 

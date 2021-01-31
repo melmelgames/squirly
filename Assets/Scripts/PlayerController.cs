@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     public GameObject holeWithAcornCovered;
     public GameObject holeCovered;
     public GameObject acornPrefab;
+    public GameObject scoreWindow;
+    private ScoreWindow scoreWindowScript;
     private GameObject acorn;
     private Rigidbody2D playerRB2D;
     private Animator playerAnimator;
     private Vector2 movementDir;
     private bool isHoldingAcorn = false;
+    private GameManager gameManagerInstance;
     [SerializeField] private GameObject hole;
     [SerializeField] private float moveSpeed;
 
@@ -21,6 +24,8 @@ public class PlayerController : MonoBehaviour
         acorn = null;
         playerRB2D = gameObject.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
+        gameManagerInstance = GameManager.instance;
+        scoreWindowScript = scoreWindow.GetComponent<ScoreWindow>();
     }
 
 
@@ -106,6 +111,8 @@ public class PlayerController : MonoBehaviour
             acorn.SetActive(true);
             isHoldingAcorn = true;
             if(hole != null && hole.CompareTag("hole_with_acorn")){
+                gameManagerInstance.SubtractScore();
+                scoreWindowScript.UpdateScoreText();
                 Instantiate(holeEmpty, hole.transform.position, Quaternion.identity);
                 Destroy(hole);
             }           
@@ -120,6 +127,8 @@ public class PlayerController : MonoBehaviour
             acorn = null;
         }
         if(hole != null && hole.CompareTag("hole_empty")){
+            gameManagerInstance.AddScore();
+            scoreWindowScript.UpdateScoreText();
             acorn = gameObject.transform.GetChild(0).gameObject;
             GameObject filledHole = (GameObject) Instantiate(holeAcorn, hole.transform.position, Quaternion.identity);
             Destroy(hole);
@@ -127,6 +136,7 @@ public class PlayerController : MonoBehaviour
             acorn.SetActive(false);
             isHoldingAcorn = false;
             acorn = null;
+            
         }
         
     }

@@ -16,12 +16,8 @@ public class EnemyController : MonoBehaviour
     private bool firstHoleDug = false;
     private GameObject player;
     private Vector2 moveDir;
-    private float moveSpeed = 4.5f;
+    private float moveSpeed = 4f;
     private bool canRun = false;
-    [SerializeField] private float xMin;
-    [SerializeField] private float xMax;
-    [SerializeField] private float yMin;
-    [SerializeField] private float yMax;
 
     private void Awake(){
         enemyAnimator = gameObject.GetComponent<Animator>();

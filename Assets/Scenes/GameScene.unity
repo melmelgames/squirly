@@ -113391,6 +113391,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 441077157}
     m_Modifications:
+    - target: {fileID: 285884110866236161, guid: 73578a0ff12a2ac47928a9e8251a2380,
+        type: 3}
+      propertyPath: m_Text
+      value: YOU FOUND X ACORNS AND YOU LOST Y TO OTHER SQUIRRELS, SO YOU STILL HAVE
+        Z STASHED AWAY FOR WINTER!
+      objectReference: {fileID: 0}
     - target: {fileID: 4484457573576299618, guid: 73578a0ff12a2ac47928a9e8251a2380,
         type: 3}
       propertyPath: m_Name

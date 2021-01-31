@@ -77,7 +77,6 @@ public class EnemyController : MonoBehaviour
             isHoldingAcorn = true;
             gameManagerInstance.AddLostAcorn();
             gameManagerInstance.SubtractScore();
-            scoreWindowScript.UpdateScoreText();
             Instantiate(holeEmpty, hole.transform.position, Quaternion.identity);     
             Destroy(hole);      
         }

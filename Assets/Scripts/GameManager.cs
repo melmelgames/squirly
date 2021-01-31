@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         Time.timeScale = 1.0f;
         score = 0;
+        acornsLost = 0;
+        totalAcornsFound = 0;
         ScoreWindow.instance.ResetTime();
         ResetMap();
         trees = FindObjectsOfType<AcornTree>();

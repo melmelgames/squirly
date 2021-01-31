@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private bool gamePaused = false;
 
-    private void Awake(){
+    private void Start(){
         acorn = null;
         playerRB2D = gameObject.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
@@ -138,7 +138,6 @@ public class PlayerController : MonoBehaviour
             isHoldingAcorn = true;
             if(hole != null && hole.CompareTag("hole_with_acorn")){
                 gameManagerInstance.SubtractScore();
-                scoreWindowScript.UpdateScoreText();
                 Instantiate(holeEmpty, hole.transform.position, Quaternion.identity);
                 Destroy(hole);
             }           
@@ -154,7 +153,6 @@ public class PlayerController : MonoBehaviour
         }
         if(hole != null && hole.CompareTag("hole_empty")){
             gameManagerInstance.AddScore();
-            scoreWindowScript.UpdateScoreText();
             acorn = gameObject.transform.GetChild(0).gameObject;
             GameObject filledHole = (GameObject) Instantiate(holeAcorn, hole.transform.position, Quaternion.identity);
             Destroy(hole);

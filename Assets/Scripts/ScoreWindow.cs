@@ -26,13 +26,14 @@ public class ScoreWindow : MonoBehaviour
 
     private void Start() {
         gameManagerInstance = GameManager.instance;   
-        UpdateScoreText(); 
         timeElapsed = 0;
     }
 
     private void Update(){
         timeElapsed += Time.deltaTime;
         timeText.text = "TIME: " + Mathf.FloorToInt(timeElapsed);
+
+        scoreText.text = "ACORNS: " + gameManagerInstance.GetScore().ToString();
     }
 
     public void UpdateScoreText(){

@@ -23,7 +23,7 @@ public class GameOverWindow : MonoBehaviour
     public Text gameOverText;
 
     public void UpdateGameOverText(int score, int acornsLost, int remaining){
-        gameOverText.text = "YOU FOUND " + score.ToString() + " ACORNS AND YOU LOST " + acornsLost.ToString() + " TO OTHER SQUIRRELS, BUT YOU STILL HAVE " + remaining.ToString() + " STASHED AWAY FOR WINTER!";
+        gameOverText.text = "YOU FOUND " + score.ToString() + " ACORNS AND YOU LOST " + acornsLost.ToString() + " TO OTHER SQUIRRELS, SO YOU STILL HAVE " + remaining.ToString() + " STASHED AWAY FOR WINTER!";
     }
 
     public void RestartButtonClicked(){
